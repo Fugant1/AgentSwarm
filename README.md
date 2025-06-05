@@ -1,2 +1,2 @@
-# MultiAgent
-Repository dedicated to make a multi agent for a interprise challenge
+# AgentSwarm
+Repository dedicated to make a agent swarm for a interprise challenge
