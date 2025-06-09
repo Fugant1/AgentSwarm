@@ -7,5 +7,8 @@ def AgentKTest():
 def AgentRTest():
     return
 
+def AgentPTest():
+    return
+
 def ApiTest():
     return
