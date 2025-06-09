@@ -42,7 +42,7 @@ class KnowledgeAgent:
         embeddings = OpenAIEmbeddings()
         return FAISS.from_documents(chunks, embeddings)
 
-    async def handle(self, query: str):
+    async def chat(self, query: str):
         result = await self.qa_chain.ainvoke(query)
         return {
             "response": result["result"],
