@@ -6,7 +6,7 @@ router = APIRouter()
 manager = Manager()
 
 class ChatRequest(BaseModel):
-    message: str
+    message: str    
     user_id: str
 
 class ChatResponse(BaseModel):
