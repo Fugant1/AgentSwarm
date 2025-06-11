@@ -1,12 +1,12 @@
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
-from agent_swarm.manager.manager import Manager
+from agent_swarm.agents.agent_manager import Manager
 
 router = APIRouter()
 manager = Manager()
 
 class ChatRequest(BaseModel):
-    message: str    
+    message: str
     user_id: str
 
 class ChatResponse(BaseModel):
@@ -18,7 +18,7 @@ class ChatResponse(BaseModel):
 async def chat_endpoint(request: ChatRequest):
     message = request.message
     try:
-        ChatResponse = await manager.chat(message)
-        return ChatResponse
+        chat_response = await manager.chat(message)
+        return chat_response
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
