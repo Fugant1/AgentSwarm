@@ -1,9 +1,12 @@
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
+import os
+
+key = os.getenv('OPEN_API_KEY')
 
 class RouterAgent:
     def __init__(self):
-        self.llm = ChatOpenAI(temperature=0) #temp zero to more accurate responses
+        self.llm = ChatOpenAI(key, temperature=0) #temp zero to more accurate responses
         self.prompt = ChatPromptTemplate.from_messages([
             ("system", "Classify the message as either 'knowledge', 'support', or 'pokemon'. Just return the word with no explain"),
             ("human", "Message: {message}") #tried a prompt that make the model answer one word

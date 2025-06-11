@@ -1,10 +1,14 @@
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_openai import ChatOpenAI
-
+import os
 
 class Personalities:
     def __init__(self):
-        self.personality_llm = ChatOpenAI(temperature = 0.7, model = 'gpt-3.5')
+        self.personality_llm = key = os.getenv('OPEN_API_KEY')
+        self.llm = ChatOpenAI(kapi_key=key,
+            model="gpt-3.5-turbo", 
+            temperature=0.7, 
+            max_tokens=1) 
 
     async def apply_knwoledge_personality(self, question, raw_response):
         prompt = ChatPromptTemplate('''

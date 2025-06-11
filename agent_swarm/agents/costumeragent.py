@@ -17,7 +17,11 @@ def open_support_ticket(issue: str):
 
 class CostumerAgent:
     def __init__(self):
-        self.llm = ChatOpenAI(temperature=0) #temp zero to more accurate responses
+        key = os.getenv('OPEN_API_KEY')
+        self.llm = ChatOpenAI(kapi_key=key,
+            model="gpt-3.5-turbo", 
+            temperature=0, #zero temp to more precise resposne
+            max_tokens=1) 
         self.tools = [get_customer_balance, open_support_ticket]
         self.agent = initialize_agent(
             tools=self.tools,

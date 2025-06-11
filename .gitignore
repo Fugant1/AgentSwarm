@@ -1,3 +1,4 @@
 llm-agent-swam-challenge.md
 .venv
 __pycache__/
+.env
