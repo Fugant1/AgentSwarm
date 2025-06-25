@@ -39,7 +39,7 @@ agent_swarm/
 ├── agents/               # Router, Knowledge, Customer agents  
 ├── api/                  # FastAPI endpoint  
 ├── data/                 # RAG data storage  
-├── tests/                # Unit   
+├── tests/                # Unit/ec2e
 └── utils/                # RAG, personality layer 
 
 ## 📌 Why This Project?
