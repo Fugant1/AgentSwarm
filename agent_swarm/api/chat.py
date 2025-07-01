@@ -1,9 +1,10 @@
 from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 from agent_swarm.agents.agent_manager import Manager
+import os
 
 router = APIRouter()
-manager = Manager()
+manager = Manager(os.getenv('GOOGLE_GEN_AI_KEY'))
 
 class ChatRequest(BaseModel):
     message: str

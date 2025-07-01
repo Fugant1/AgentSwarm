@@ -2,7 +2,9 @@ fastapi
 uvicorn[standard]
 pydantic
 langchain
-langchain-openai
+langchain_google_genai
 langchain-community
 faiss-cpu
 openai
+beautifulsoup4
+html2text

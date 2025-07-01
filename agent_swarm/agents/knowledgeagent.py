@@ -1,8 +1,9 @@
 from agent_swarm.utils.rag_pipelines import RagPipeline
+import logging
 
 class KnowledgeAgent:
-    def __init__(self):
-        self.llm = 'gpt-3.5'
+    def __init__(self, key):
+        self.llm = 'gemini-2.0-flash-thinking-exp-01-21'
         self.temperature = 0
         self.urls = [
               "https://www.infinitepay.io",
@@ -21,12 +22,15 @@ class KnowledgeAgent:
               "https://www.infinitepay.io/cartao",
               "https://www.infinitepay.io/rendimento",
         ]
-        self.RAG = RagPipeline(self.llm, self.temperature, self.urls)
+        self.RAG = RagPipeline(self.llm, key, self.temperature, self.urls)
 
     async def setup(self):
         await self.RAG.setup()
 
     async def chat(self, query: str):
+        logging.INFO("p")
+        await self.setup()
+        logging.INFO("p")
         result = await self.RAG.query(query)
         return {
             "response": result["response"],

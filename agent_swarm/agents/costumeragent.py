@@ -1,6 +1,6 @@
 from langchain.agents import initialize_agent, Tool
 from langchain.agents.agent_types import AgentType
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.tools import tool
 
 @tool
@@ -16,8 +16,11 @@ def open_support_ticket(issue: str):
     return f"Ticket opened for issue: {issue}. Reference ID: #{hash(issue) % 10000}"
 
 class CostumerAgent:
-    def __init__(self):
-        self.llm = ChatOpenAI(temperature=0) #temp zero to more accurate responses
+    def __init__(self, key):
+        self.llm = ChatGoogleGenerativeAI(google_api_key=key,
+            model="gemini-2.0-flash-thinking-exp-01-21", 
+            temperature=0) #zero temp to more precise resposne
+ 
         self.tools = [get_customer_balance, open_support_ticket]
         self.agent = initialize_agent(
             tools=self.tools,
