@@ -26,7 +26,6 @@ class RouterAgent:
     async def route(self, message: str):
         chain = self.prompt | self.llm
         result = await chain.ainvoke({"message": message})
-        logger.info(f"raw output result: {result}") 
         answer = result.content.lower() #lower to be easier to identify
         logger.info(f"Classification result: {answer}") 
 

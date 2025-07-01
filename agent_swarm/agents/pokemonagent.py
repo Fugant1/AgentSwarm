@@ -13,4 +13,5 @@ class PokemonAgent:
     async def chat(self, message):
         chain = self.prompt | self.llm
         result = await chain.ainvoke({"message": message})
+        
         return result.content
